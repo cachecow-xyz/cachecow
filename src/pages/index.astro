@@ -1,0 +1,145 @@
+---
+import Tile from '../components/Tile.astro';
+import Layout from '../layouts/Layout.astro';
+
+const tiles = [
+	{
+		title: 'Project One',
+		description: 'A cool subdomain project',
+		url: 'https://one.cachecow.xyz',
+		color: '#FF6B6B'
+	},
+	{
+		title: 'Project Two',
+		description: 'Another interesting thing',
+		url: 'https://two.cachecow.xyz',
+		color: '#4ECDC4'
+	},
+	{
+		title: 'Project Three',
+		description: 'Something creative',
+		url: 'https://three.cachecow.xyz',
+		color: '#45B7D1'
+	},
+	{
+		title: 'Project Four',
+		description: 'A fun experiment',
+		url: 'https://four.cachecow.xyz',
+		color: '#96CEB4'
+	},
+	{
+		title: 'Project Five',
+		description: 'An exploration',
+		url: 'https://five.cachecow.xyz',
+		color: '#FFEAA7'
+	},
+	{
+		title: 'Project Six',
+		description: 'A digital garden',
+		url: 'https://six.cachecow.xyz',
+		color: '#DDA15E'
+	}
+];
+---
+
+<Layout>
+	<div class="container">
+		<header>
+			<h1>cachecow.xyz</h1>
+		</header>
+
+		<div class="grid">
+			{tiles.map((tile) => (
+				<Tile
+					title={tile.title}
+					description={tile.description}
+					url={tile.url}
+					color={tile.color}
+				/>
+			))}
+		</div>
+
+		<footer>
+			<p>
+				main site: <a href="https://madelyn.dev">madelyn.dev</a>
+			</p>
+		</footer>
+	</div>
+</Layout>
+
+<style>
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 2rem;
+	}
+
+	header {
+		text-align: center;
+		margin-bottom: 4rem;
+	}
+
+	h1 {
+		font-size: 3rem;
+		margin: 0;
+		font-weight: 700;
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 1.5rem;
+	}
+
+	footer {
+		margin-top: 4rem;
+		padding-top: 2rem;
+		border-top: 1px solid #e0e0e0;
+		text-align: center;
+	}
+
+	footer p {
+		margin: 0;
+		font-size: 0.95rem;
+		color: #888;
+	}
+
+	footer a {
+		color: #667eea;
+		text-decoration: none;
+		transition: color 0.2s ease;
+	}
+
+	footer a:hover {
+		color: #764ba2;
+		text-decoration: underline;
+	}
+
+	@media screen and (max-width: 768px) {
+		.container {
+			padding: 1.5rem;
+		}
+
+		h1 {
+			font-size: 2rem;
+		}
+
+		header p {
+			font-size: 1rem;
+		}
+
+		.grid {
+			grid-template-columns: 1fr;
+			gap: 1rem;
+		}
+
+		footer {
+			margin-top: 3rem;
+			padding-top: 1.5rem;
+		}
+	}
+</style>
