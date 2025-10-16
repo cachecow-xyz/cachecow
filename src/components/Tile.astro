@@ -1,0 +1,68 @@
+---
+interface Props {
+	title: string;
+	description: string;
+	url: string;
+	color: string;
+}
+
+const { title, description, url, color } = Astro.props;
+---
+
+<a href={url} class="tile" style={`background-color: ${color}`}>
+	<div class="tile-content">
+		<h2>{title}</h2>
+		<p>{description}</p>
+	</div>
+</a>
+
+<style>
+	.tile {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 2rem;
+		text-decoration: none;
+		color: white;
+		border-radius: 12px;
+		transition: transform 0.2s ease, box-shadow 0.2s ease;
+		min-height: 200px;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	}
+
+	.tile:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+	}
+
+	.tile-content {
+		text-align: center;
+	}
+
+	h2 {
+		margin: 0 0 0.5rem 0;
+		font-size: 1.5rem;
+		font-weight: 600;
+	}
+
+	p {
+		margin: 0;
+		font-size: 1rem;
+		opacity: 0.9;
+	}
+
+	@media screen and (max-width: 768px) {
+		.tile {
+			min-height: 150px;
+			padding: 1.5rem;
+		}
+
+		h2 {
+			font-size: 1.25rem;
+		}
+
+		p {
+			font-size: 0.9rem;
+		}
+	}
+</style>
